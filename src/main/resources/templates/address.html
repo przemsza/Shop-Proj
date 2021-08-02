@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org", lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Adres dostawy</title>
+</head>
+<body>
+<header th:insert="general.html :: header"></header>
+
+<form method="post" th:action="@{/address/send}" th:object="${address}">
+    <legend>Adres dostawy</legend>
+  <label>
+    Ulica
+    <input type="text" placeholder="Podaj ulice..." th:field="*{street}">
+  </label>
+
+  <label>
+      Miasto
+    <input type="text" placeholder="Podaj ulice..." th:field="*{city}">
+  </label>
+
+    <label>
+        Numer telefonu
+        <input type="text" placeholder="Podaj numer teleonu..." th:field="*{telephone}">
+    </label>
+
+    <button type="submit">Wyślij</button>
+
+    <header th:insert="general.html :: foot"></header>
+
+</form>
+</body>
+</html>

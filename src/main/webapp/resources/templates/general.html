@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Witaj, w naszej pizzeri</title>
+    <link rel="stylesheet" media="screen" th:href="@{/css/application.css}"/>
+<body>
+
+  <header th:fragment="head-logo">
+        <h1>Menu</h1>
+        <a th:href="@{/order}" class="shop-logo"><i class="fas fa-shopping-basket"></i></a>
+  </header>
+
+  <nav th:fragment="navigation">
+      <ul>
+          <li><a th:href="@{/#}">O nas</a></li>
+          <li><a th:href="@{/menu}">Menu</a></li>
+          <li><a th:href="@{/#}">Rezerwacje</a></li>
+          <li><a th:href="@{/#}">Kontakt</a></li>
+      </ul>
+  </nav>
+
+<div th th:fragment="foot">
+    &copy; Mateusz Zalewski 2021
+</div>
+</body>
+</html>

@@ -20,30 +20,11 @@ public class Order {
             inverseJoinColumns = {@JoinColumn(name = "id_item", referencedColumnName = "id")}
     )
     private List<Item> orderList = new ArrayList<>();
-    private String address;
-    private String telephone;
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
     public Order() {
-    }
-
-
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+        status = OrderStatus.NEW;
     }
 
     public Long getId() {

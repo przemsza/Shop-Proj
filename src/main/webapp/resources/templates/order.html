@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org", lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Zamówienie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" media="screen" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/all.css}" href="/static/css/all.css" media="screen">
+    <script src="https://kit.fontawesome.com/b0485a913b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<header th:insert="general.html :: head-logo" class="header-main"></header>
+<nav th:insert="general.html :: navigation" class="nav-menu"></nav>
+<div class="container">
+    <main  class="menu-class" th:object="${orders}">
+        <div class="restaurant-menu-item" th:each="item: ${orders}" >
+            <h2 th:text="${item.name}"></h2>
+            <p th:text="${item.price}"></p>
+        </div>
+    </main>
+</div>
+<footer th:insert="general.html :: foot"></footer>
+</body>
+</html>

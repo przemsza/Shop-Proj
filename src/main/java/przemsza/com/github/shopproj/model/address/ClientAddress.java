@@ -1,6 +1,7 @@
 package przemsza.com.github.shopproj.model.address;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Entity
 public class ClientAddress {
@@ -14,15 +15,35 @@ public class ClientAddress {
     private String city;
     @Column(nullable = false)
     private String telephone;
-
-
+    @Email
+    private String email;
+    @Column(length = 500)
+    private String comments;
     public ClientAddress() {
     }
 
-    public ClientAddress(String street, String city, String telephone) {
+    public ClientAddress(String street, String city, String telephone, String email, String comments) {
         this.street = street;
         this.city = city;
         this.telephone = telephone;
+        this.email = email;
+        this.comments = comments;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
     public Long getId() {
@@ -55,5 +76,17 @@ public class ClientAddress {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    @Override
+    public String toString() {
+        return "ClientAddress{" +
+                "id=" + id +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", email='" + email + '\'' +
+                ", comments='" + comments + '\'' +
+                '}';
     }
 }

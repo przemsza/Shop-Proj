@@ -1,5 +1,5 @@
 insert into item(id, price, name, short_description, description) VALUES
-(1, 22.50, 'Pizza Margherita', 'Włoska pizza na cienkim cieście z serem i sosem pomidorowym',
+(1, 22.59, 'Pizza Margherita', 'Włoska pizza na cienkim cieście z serem i sosem pomidorowym',
  'Pizza Margherita to klasyka włoskiej kuchni. W naszym wydaniu serwujemy pizzę na cienkim cieście z ' ||
  'ręcznie przygotowanym sosem pomidorowym i oryginalnym serem mozarella'),
 (2, 25.99, 'Pizza Capriciosa', 'Pizza na cienkim cieście z serem, sosem pomidorowym i pieczarkami',

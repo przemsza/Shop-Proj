@@ -18,7 +18,7 @@
       <div class="restaurant-menu-item" th:each="item : ${items}">
           <h2 th:text="|${item.name} (${item.price} zł)| "></h2>
           <p th:text="${item.shortDescription}"></p>
-          <a th:href="|/add/${item.id}|" ><i class="fas fa-plus"></i></a>
+          <a th:href="|/add/${item.id}|" class="plus-font"><i class="fas fa-plus"></i></a>
       </div>
   </main>
 </div>

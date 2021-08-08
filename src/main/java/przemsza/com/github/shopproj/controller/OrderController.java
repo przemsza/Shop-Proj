@@ -13,6 +13,8 @@ import przemsza.com.github.shopproj.model.order.ClientOrder;
 import przemsza.com.github.shopproj.model.order.OrderRepository;
 
 import javax.persistence.criteria.Order;
+import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -32,12 +34,31 @@ public class OrderController {
     public String addToOrder(@PathVariable Long id ){
         Optional<Item> byId = itemRepository.findById(id);
         byId.ifPresent(x-> clientOrder.add(byId.get()));
-        return "redirect:/";
+        return "redirect:/menu";
+    }
+
+    @GetMapping("/minus/{id}")
+    public String removerFromOrder(@PathVariable Long id){
+        var orderList = clientOrder.getOrder().getOrderList();
+        var item = orderList.stream().findFirst().filter(x -> x.getId().equals(id));
+        item.ifPresent(x-> orderList.remove(item.get()));
+        return "redirect:/order";
     }
 
     @GetMapping("/order")
     public String showOrder(Model model){
-        model.addAttribute("orders", clientOrder.getOrder().getOrderList());
-        return "order";
+      model.addAttribute("orders", clientOrder.getOrder().getOrderList());
+        BigDecimal bigDecimal = getPrice();
+
+        model.addAttribute("price", bigDecimal.doubleValue());
+      return "order";
+    }
+
+    public BigDecimal getPrice() {
+        BigDecimal bigDecimal = (clientOrder.getOrder().getOrderList())
+                  .stream()
+                  .map(x-> BigDecimal.valueOf(x.getPrice()))
+                  .reduce(BigDecimal.ZERO, BigDecimal::add);
+        return bigDecimal;
     }
 }

@@ -14,9 +14,17 @@
 <header th:insert="general.html :: head-logo" class="header-main"></header>
 <nav th:insert="general.html :: navigation" class="nav-menu"></nav>
 <div class="container">
-    <main>
+    <main th:object="${client}">
     <form method="post" th:action="@{/address/send}" th:object="${address}">
         <h2>Adres dostawy</h2>
+        <label>
+            <h3>Imie</h3>
+            <input type="text" placeholder="Podaj imie..." th:field="${client.name}">
+        </label>
+        <label>
+            <h3>Nazwisko</h3>
+            <input type="text" placeholder="Podaj nazwisko..." th:field="${client.lastName}">
+        </label>
         <label>
             <h3>Ulica</h3>
             <input type="text" placeholder="Podaj ulice..." th:field="*{street}">
@@ -27,11 +35,11 @@
         </label>
         <label>
             <h3>Numer telefonu</h3>
-            <input type="text" placeholder="Podaj numer teleonu..." th:field="*{telephone}">
+            <input type="text" placeholder="Podaj numer teleonu..." th:field="${client.telephone}">
         </label>
         <label>
               <h3>Adres email</h3>
-               <input type="text" placeholder="Podaj numer teleonu..." th:field="*{email}">
+               <input type="text" placeholder="Podaj numer teleonu..." th:field="${client.email}">
         </label>
         <label>
             <h3>Uwagi do zamówienia</h3>
@@ -44,21 +52,11 @@
             <h2 th:text="|Do zapłaty ${price} zł|"></h2>
         </div>
 
-        <button type="submit" >Wyślij</button>
+        <button type="submit" class="address-button">Wyślij</button>
     </form>
     </main>
 </div>
 <footer th:insert="general.html :: foot"></footer>
 </body>
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>

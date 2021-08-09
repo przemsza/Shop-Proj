@@ -13,36 +13,15 @@ public class ClientAddress {
     private String street;
     @Column(nullable = false)
     private String city;
-    @Column(nullable = false)
-    private String telephone;
-    @Email
-    private String email;
     @Column(length = 500)
     private String comments;
+
     public ClientAddress() {
     }
 
-    public ClientAddress(String street, String city, String telephone, String email, String comments) {
+    public ClientAddress(String street, String city, String comments) {
         this.street = street;
         this.city = city;
-        this.telephone = telephone;
-        this.email = email;
-        this.comments = comments;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
         this.comments = comments;
     }
 
@@ -70,23 +49,11 @@ public class ClientAddress {
         this.city = city;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getComments() {
+        return comments;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    @Override
-    public String toString() {
-        return "ClientAddress{" +
-                "id=" + id +
-                ", street='" + street + '\'' +
-                ", city='" + city + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", email='" + email + '\'' +
-                ", comments='" + comments + '\'' +
-                '}';
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 }

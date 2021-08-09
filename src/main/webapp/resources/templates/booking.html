@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Rezerwacja stolika</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" media="screen" th:href="@{/css/main.css}">
+  <link rel="stylesheet" th:href="@{/css/all.css}" href="/static/css/all.css" media="screen">
+  <script src="https://kit.fontawesome.com/b0485a913b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header th:insert="general.html :: head-logo" class="header-main"></header>
+<nav th:insert="general.html :: navigation" class="nav-menu"></nav>
+<div class="order-logo">
+  <h1>Rezerwacja Stolika</h1>
+</div>
+<div class="container">
+  <main>
+    <form method="post" th:action="@{/address/send}" th:object="${address}">
+      <h2>Adres dostawy</h2>
+      <label>
+        <h3>Data</h3>
+        <input type="date" th:field="*{street}">
+      </label>
+      <label>
+        <h3>Ilość osób</h3>
+        <input type="" placeholder="Podaj ulice..." th:field="*{city}">
+      </label>
+      <label>
+        <h3>Numer telefonu</h3>
+        <input type="text" placeholder="Podaj numer teleonu..." th:field="*{telephone}">
+      </label>
+      <label>
+        <h3>Adres email</h3>
+        <input type="text" placeholder="Podaj numer teleonu..." th:field="*{email}">
+      </label>
+      <label>
+        <h3>Uwagi do zamówienia</h3>
+        <textarea th:field="*{comments}" id="story" name="story" rows="5" cols="33" placeholder="Uwagi do zamówienia..."></textarea>
+      </label>
+
+      <div th:if="!${items.isEmpty()}">
+        <h1>Zamówienie: </h1>
+        <p th:each="item : ${items}" th:text="|${item.name} (${item.price} zł)| "></p>
+        <h2 th:text="|Do zapłaty ${price} zł|"></h2>
+      </div>
+
+      <button type="submit" class="address-button">Wyślij</button>
+    </form>
+  </main>
+</div>
+<footer th:insert="general.html :: foot"></footer>
+</body>
+</html>

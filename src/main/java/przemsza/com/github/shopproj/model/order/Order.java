@@ -1,5 +1,6 @@
 package przemsza.com.github.shopproj.model.order;
 
+import przemsza.com.github.shopproj.model.client.Client;
 import przemsza.com.github.shopproj.model.item.Item;
 
 import javax.persistence.*;
@@ -22,9 +23,19 @@ public class Order {
     private List<Item> orderList = new ArrayList<>();
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+    @ManyToOne
+    private Client client;
 
     public Order() {
         status = OrderStatus.NEW;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Long getId() {

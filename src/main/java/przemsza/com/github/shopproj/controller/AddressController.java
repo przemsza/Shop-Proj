@@ -1,6 +1,7 @@
 package przemsza.com.github.shopproj.controller;
 
 import org.apache.commons.mail.EmailException;
+import org.aspectj.lang.annotation.After;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,26 +42,25 @@ public class AddressController {
 
     @PostMapping("/send")
     public String getClientAddres(@ModelAttribute("address")ClientAddress clientAddress,@ModelAttribute("client") Client client, Model model){
-        System.out.println(clientAddress);
         clientAddressRepository.save(clientAddress);
-        orderRepository.save(clientOrder.getOrder());
         clientRepository.save(client);
+        clientOrder.getOrder().setClient(client);
+        orderRepository.save(clientOrder.getOrder());
         sendEmail(clientAddress, orderController.getPrice().doubleValue(), client);
         model.addAttribute("address", clientAddress);
         return "redirect:/";
     }
 
-
-
     @GetMapping("")
     public String showFormAddress(Model model){
         model.addAttribute("address", new ClientAddress("","",""));
-        model.addAttribute("client", new Client("","","",""));
+        model.addAttribute("client", new Client("","",""));
         model.addAttribute("items",clientOrder.getOrder().getOrderList());
         BigDecimal price = orderController.getPrice();
         model.addAttribute("price", price);
         return "address";
     }
+
 
     private void sendEmail(ClientAddress clientAddress, Double price, Client client){
         try {

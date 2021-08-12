@@ -9,18 +9,15 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String name;
-    @Column(nullable = false, name = "last_name")
-    private String lastName;
+    @Column(nullable = false, name = "name_and_last_name")
+    private String nameAndLastName;
     @Column(nullable = false)
     private String telephone;
     @Email
     private String email;
 
-    public Client(String name, String lastName, String telephone, String email) {
-        this.name = name;
-        this.lastName = lastName;
+    public Client(String nameAndLastName, String telephone, String email) {
+        this.nameAndLastName = nameAndLastName;
         this.telephone = telephone;
         this.email = email;
     }
@@ -36,20 +33,12 @@ public class Client {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameAndLastName() {
+        return nameAndLastName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setNameAndLastName(String nameAndLastName) {
+        this.nameAndLastName = nameAndLastName;
     }
 
     public String getTelephone() {

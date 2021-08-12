@@ -18,12 +18,8 @@
     <form method="post" th:action="@{/address/send}" th:object="${address}">
         <h2>Adres dostawy</h2>
         <label>
-            <h3>Imie</h3>
-            <input type="text" placeholder="Podaj imie..." th:field="${client.name}">
-        </label>
-        <label>
-            <h3>Nazwisko</h3>
-            <input type="text" placeholder="Podaj nazwisko..." th:field="${client.lastName}">
+            <h3>Imie i Nazwisko</h3>
+            <input type="text" placeholder="Podaj imie i nazwisko..." th:field="${client.nameAndLastName}">
         </label>
         <label>
             <h3>Ulica</h3>

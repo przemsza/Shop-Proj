@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org", lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Zamówienia klientów - panel adinistratora</title>
+  <meta content="Pizza włoska, robiona z miłością i zaangażowanie. W centrum górnego śląska, w malowiczych Katowicach.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" media="screen" th:href="@{/css/main.css}">
+  <link rel="stylesheet" th:href="@{/css/all.css}" href="/static/css/all.css" media="screen">
+  <script src="https://kit.fontawesome.com/b0485a913b.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<header th:insert="general.html :: head-logo-admin" class="header-main"></header>
+<nav th:insert="general.html :: navigation-panel" class="nav-menu"></nav>
+<div class="order-logo">
+  <h1>Zamówienia klientów</h1>
+</div>
+<nav th:insert="general.html :: navigation-status" class="nav-status"></nav>
+<div class="container">
+  <main>
+    <table th:object="${ordersList}">
+      <thead>
+      <tr>
+        <td>Id</td>
+        <td>Adres</td>
+        <td>Telefon</td>
+        <td>Status</td>
+        <td>Edycja</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="order : ${ordersList}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.address.toString()}"></td>
+        <td th:text="${order.client.telephone}"></td>
+        <td th:text="${order.status}"></td>
+        <td><a th:href="|/panel/order/${order.id}|" class="edit-font"><i class="fas fa-edit"></i></a> </td>
+      </tr>
+      </tbody>
+    </table>
+  </main>
+</div>
+<footer th:insert="general.html :: foot"></footer>
+</body>
+</html>

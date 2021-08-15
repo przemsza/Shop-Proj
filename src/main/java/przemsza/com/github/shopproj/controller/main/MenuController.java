@@ -1,4 +1,4 @@
-package przemsza.com.github.shopproj.controller;
+package przemsza.com.github.shopproj.controller.main;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

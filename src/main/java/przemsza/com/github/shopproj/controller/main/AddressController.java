@@ -1,7 +1,6 @@
-package przemsza.com.github.shopproj.controller;
+package przemsza.com.github.shopproj.controller.main;
 
 import org.apache.commons.mail.EmailException;
-import org.aspectj.lang.annotation.After;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,12 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import przemsza.com.github.shopproj.mail.Mail;
+import przemsza.com.github.shopproj.model.mail.Mail;
 import przemsza.com.github.shopproj.model.address.ClientAddress;
 import przemsza.com.github.shopproj.model.address.ClientAddressRepository;
 import przemsza.com.github.shopproj.model.client.Client;
 import przemsza.com.github.shopproj.model.client.ClientRepository;
 import przemsza.com.github.shopproj.model.order.ClientOrder;
+import przemsza.com.github.shopproj.model.order.Order;
 import przemsza.com.github.shopproj.model.order.OrderRepository;
 
 import java.math.BigDecimal;
@@ -29,6 +29,7 @@ public class AddressController {
     private OrderRepository orderRepository;
     private Mail email;
     private ClientRepository clientRepository;
+    private Order order;
 
     @Autowired
     public AddressController(ClientAddressRepository clientAddressRepository, ClientOrder clientOrder, OrderController orderController, OrderRepository orderRepository, Mail email,ClientRepository clientRepository) {
@@ -38,15 +39,18 @@ public class AddressController {
         this.orderRepository = orderRepository;
         this.email = email;
         this.clientRepository=clientRepository;
+        this.order = order;
     }
 
     @PostMapping("/send")
     public String getClientAddres(@ModelAttribute("address")ClientAddress clientAddress,@ModelAttribute("client") Client client, Model model){
         clientAddressRepository.save(clientAddress);
         clientRepository.save(client);
-        clientOrder.getOrder().setClient(client);
-        orderRepository.save(clientOrder.getOrder());
-        sendEmail(clientAddress, orderController.getPrice().doubleValue(), client);
+        order = clientOrder.getOrder();
+        order.setAddress(clientAddress);
+        order.setClient(client);
+        orderRepository.save(order);
+      //  sendEmail(clientAddress, orderController.getPrice().doubleValue(), client);
         model.addAttribute("address", clientAddress);
         return "redirect:/";
     }

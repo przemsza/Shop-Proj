@@ -1,5 +1,6 @@
 package przemsza.com.github.shopproj.model.order;
 
+import przemsza.com.github.shopproj.model.address.ClientAddress;
 import przemsza.com.github.shopproj.model.client.Client;
 import przemsza.com.github.shopproj.model.item.Item;
 
@@ -24,7 +25,19 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
     @ManyToOne
+    @JoinColumn(name = "client_id")
     private Client client;
+    @ManyToOne
+    @JoinColumn(name="addres_id")
+    private ClientAddress address;
+    
+    public ClientAddress getAddress() {
+        return address;
+    }
+
+    public void setAddress(ClientAddress address) {
+        this.address = address;
+    }
 
     public Order() {
         status = OrderStatus.NEW;

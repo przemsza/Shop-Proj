@@ -22,7 +22,7 @@ header h1{
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
+    margin-top: 10%;
     left: 0;
     right: 0;
     text-align: center;
@@ -37,7 +37,7 @@ nav ul li a{
 }
 
 nav ul li a:hover{
-    color: green;
+    color: goldenrod;
     opacity: 0.5;
 }
 
@@ -46,6 +46,71 @@ nav ul li{
     width: 25%;
     text-align: center;
     padding-top: 10px;
+}
+
+.nav-status ul li{
+    position: center;
+    width: 33.333%;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.nav-status ul li a{
+    display: block;
+}
+
+.nav-status ul li:nth-child(2n){
+    background-color: green;
+}
+
+
+.nav-status ul li:nth-child(3n){
+    background-color: #bb3e3e;
+}
+
+.nav-status ul li{
+    background-color: royalblue;
+}
+
+nav .nav-status{
+    background-color: transparent;
+    width: 60%;
+    height: fit-content;
+}
+
+.order-button:hover {
+    background-color: goldenrod;
+}
+
+.address-button:hover{
+    background-color: goldenrod;
+}
+
+ .edit-font{
+    text-decoration: none;
+    display: block;
+    color: darkcyan;
+  }
+
+  tr:nth-child(2n) .edit-font{
+      color: #eeeeee;
+  }
+
+  .edit-font:hover{
+      color: goldenrod;
+  }
+
+  tr:nth-child(2n) .edit-font:hover{
+      color: goldenrod;
+  }
+
+
+
+
+.nav-status{
+    width: 60%;
+    margin: 0 auto;
+    position: center;
 }
 
 nav ul{
@@ -68,7 +133,7 @@ nav{
 }
 
 .fa-shopping-basket:hover{
-    color: green;
+    color: goldenrod;
     transition: 0.3s;
 }
 
@@ -85,6 +150,52 @@ html{
     background-color: white;
 }
 
+table{
+    font-size: 16px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table td{
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+    color: #111111;
+    width: fit-content;
+    padding: 0 10px;
+}
+
+thead{
+    background-color: darkcyan;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+thead tr td{
+    color: #eeeeee;
+}
+
+table tr:nth-child(2n){
+    background-color: darkcyan;
+}
+
+table tr:nth-child(2n+1) .fas-fa-edit{
+    color: darkcyan;
+}
+
+table tr:nth-child(2n) td{
+    color: #eeeeee;
+}
+
+
+
+table tr{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 img{
     width: 100%;
     height: 200px;
@@ -92,10 +203,14 @@ img{
 
 footer{
     width: 100%;
-    background-color: cornflowerblue;
+    background-color: goldenrod;
     color: white;
     text-align: center;
     font-size: 30px;
+    line-height: 50px;
+}
+
+.nav-status ul li{
     line-height: 50px;
 }
 
@@ -117,8 +232,7 @@ main{
 }
 
 .restaurant-menu-item:hover{
-    border: 4px solid #bb3e3e;
-    transition: 0.2s;
+    border: 4px solid goldenrod;
 }
 
 main h2{

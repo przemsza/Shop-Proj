@@ -8,7 +8,15 @@
 
   <header th:fragment="head-logo">
         <a th:href="@{/order}" class="shop-logo"><i class="fas fa-shopping-basket"></i></a>
+        <h1>Pizzeria Roma</h1>
   </header>
+
+
+  <header th:fragment="head-logo-admin">
+      <h1>Panel administratora</h1>
+  </header>
+
+
 
   <nav th:fragment="navigation">
       <ul>
@@ -16,6 +24,24 @@
           <li><a th:href="@{/menu}">Menu</a></li>
           <li><a th:href="@{/booking}">Rezerwacje</a></li>
           <li><a th:href="@{/#}">Kontakt</a></li>
+      </ul>
+  </nav>
+
+
+  <nav th:fragment="navigation-panel">
+      <ul>
+          <li><a th:href="@{/panel/orders}">Zamówienia</a></li>
+          <li><a th:href="@{/panel/bookings}">Rezerwacje</a></li>
+          <li><a th:href="@{/panel/history}">Historia</a></li>
+          <li><a th:href="@{/#}">Kontakt</a></li>
+      </ul>
+  </nav>
+
+  <nav th:fragment="navigation-status">
+      <ul>
+          <li><a th:href="|@{/panel/orders/status/NEW}|">Nowe</a> </li>
+          <li><a th:href="@{/panel/orders/status/IN_PROGRESS}">W przygotowaniu</a> </li>
+          <li><a th:href="@{/panel/orders/status/COMPLETE}">Zrealizowane</a> </li>
       </ul>
   </nav>
 

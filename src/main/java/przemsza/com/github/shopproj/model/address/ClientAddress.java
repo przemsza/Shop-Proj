@@ -56,4 +56,9 @@ public class ClientAddress {
     public void setComments(String comments) {
         this.comments = comments;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Ulica: %s \n Miasto: %s",street,city);
+    }
 }

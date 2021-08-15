@@ -1,4 +1,4 @@
-package przemsza.com.github.shopproj.controller;
+package przemsza.com.github.shopproj.controller.main;
 
 import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("")
-public class OrderController {
+public class    OrderController {
 
     private ItemRepository itemRepository;
     private ClientOrder clientOrder;
@@ -40,7 +40,7 @@ public class OrderController {
     @GetMapping("/minus/{id}")
     public String removerFromOrder(@PathVariable Long id){
         var orderList = clientOrder.getOrder().getOrderList();
-        var item = orderList.stream().findFirst().filter(x -> x.getId().equals(id));
+        var item = orderList.stream().filter(x -> x.getId().equals(id)).findFirst();
         item.ifPresent(x-> orderList.remove(item.get()));
         return "redirect:/order";
     }

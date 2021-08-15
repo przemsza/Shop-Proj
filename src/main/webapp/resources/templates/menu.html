@@ -13,6 +13,10 @@
 <body>
 <header th:insert="general.html :: head-logo" class="header-main"></header>
 <nav th:insert="general.html :: navigation" class="nav-menu"></nav>
+<div class="order-logo">
+    <h1>Menu
+    </h1>
+</div>
 <div class="container">
   <main th:object="${items}" class="menu-class">
       <div class="restaurant-menu-item" th:each="item : ${items}">

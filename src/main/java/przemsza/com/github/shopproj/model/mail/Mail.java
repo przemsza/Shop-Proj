@@ -1,14 +1,12 @@
-package przemsza.com.github.shopproj.mail;
+package przemsza.com.github.shopproj.model.mail;
 
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 import org.springframework.stereotype.Component;
-import przemsza.com.github.shopproj.controller.OrderController;
 import przemsza.com.github.shopproj.model.address.ClientAddress;
 import przemsza.com.github.shopproj.model.client.Client;
-import przemsza.com.github.shopproj.model.item.Item;
 import przemsza.com.github.shopproj.model.order.Order;
 
 import java.util.stream.Collectors;

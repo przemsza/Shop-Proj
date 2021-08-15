@@ -1,6 +1,7 @@
 package przemsza.com.github.shopproj.model.booking;
 
 import przemsza.com.github.shopproj.model.client.Client;
+import przemsza.com.github.shopproj.model.order.OrderStatus;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -22,6 +23,7 @@ public class Booking {
       private String comments;
       @ManyToOne
       private Client client;
+      private OrderStatus status;
 
     public Booking() {
     }

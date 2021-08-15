@@ -1,4 +1,4 @@
-package przemsza.com.github.shopproj.controller;
+package przemsza.com.github.shopproj.controller.main;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

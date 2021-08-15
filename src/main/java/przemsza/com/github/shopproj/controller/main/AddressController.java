@@ -50,7 +50,6 @@ public class AddressController {
         order.setAddress(clientAddress);
         order.setClient(client);
         orderRepository.save(order);
-      //  sendEmail(clientAddress, orderController.getPrice().doubleValue(), client);
         model.addAttribute("address", clientAddress);
         return "redirect:/";
     }
@@ -65,12 +64,4 @@ public class AddressController {
         return "address";
     }
 
-
-    private void sendEmail(ClientAddress clientAddress, Double price, Client client){
-        try {
-            email.sendEmail(clientOrder.getOrder(), clientAddress,price, client);
-        } catch (EmailException e) {
-            e.printStackTrace();
-        }
-    }
 }

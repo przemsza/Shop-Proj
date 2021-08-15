@@ -105,8 +105,6 @@ nav .nav-status{
   }
 
 
-
-
 .nav-status{
     width: 60%;
     margin: 0 auto;
@@ -348,3 +346,28 @@ label textarea{
     width: 100%;
     margin: 0 auto;
 }
+
+select {
+    width: 30%;
+    font-size: 20px;
+    line-height: 30px;
+    display: inline-block;
+    padding: 4px 3px 5px 5px;
+    outline: none;
+    color: white;
+    border: 1px solid #C8BFC4;
+    border-radius: 4px;
+    box-shadow: inset 1px 1px 2px #ddd8dc;
+    background-color: darkcyan;
+}
+
+.select-container a{
+    text-decoration: none;
+    box-sizing: border-box;
+    width: 20%;
+    background-color: royalblue;
+    color: white;
+    font-size: 20px;
+    line-height: 36px;
+}
+

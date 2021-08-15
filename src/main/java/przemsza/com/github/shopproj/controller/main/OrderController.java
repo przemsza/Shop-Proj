@@ -53,12 +53,11 @@ public class    OrderController {
         model.addAttribute("price", bigDecimal.doubleValue());
       return "order";
     }
-
     public BigDecimal getPrice() {
         BigDecimal bigDecimal = (clientOrder.getOrder().getOrderList())
-                  .stream()
-                  .map(x-> BigDecimal.valueOf(x.getPrice()))
-                  .reduce(BigDecimal.ZERO, BigDecimal::add);
+                .stream()
+                .map(x-> BigDecimal.valueOf(x.getPrice()))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
         return bigDecimal;
     }
 }

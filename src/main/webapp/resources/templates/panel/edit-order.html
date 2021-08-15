@@ -36,10 +36,20 @@
         <td th:text="${item.name}"></td>
         <td th:text="|${item.price} zł|"></td>
         <td th:text="${order.status}"></td>
-        <td><a th:href="|/panel/order/${order.id}|" class="edit-font"><i class="fas fa-edit"></i></a> </td>
+        <td><a th:href="|/panel/order/${order.id}|" class="edit-font"><i class="fas fa-minus-circle"></i></a> </td>
       </tr>
       </tbody>
     </table>
+
+    <form class="select-container" method="post" th:action="|/panel/order/${order.id}/status|" >
+      <select name="ti" id="ti">
+        <option th:each="time : ${times.entrySet()}"
+                th:value="${time.key}"
+                th:utext="${time.value}"
+        ></option>
+      </select>
+      <input name="submit" type="submit" value="submit" th:object="${order}">
+    </form>
   </main>
 </div>
 <footer th:insert="general.html :: foot"></footer>

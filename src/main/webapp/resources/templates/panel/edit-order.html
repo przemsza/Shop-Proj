@@ -42,13 +42,14 @@
     </table>
 
     <form class="select-container" method="post" th:action="|/panel/order/${order.id}/status|" >
+      <label>Czas dostawy: </label>
       <select name="ti" id="ti">
         <option th:each="time : ${times.entrySet()}"
                 th:value="${time.key}"
                 th:utext="${time.value}"
         ></option>
       </select>
-      <input name="submit" type="submit" value="submit" th:object="${order}">
+      <input name="submit" type="submit" value="W przgotowaniu" class="input-edit" th:object="${order}">
     </form>
   </main>
 </div>

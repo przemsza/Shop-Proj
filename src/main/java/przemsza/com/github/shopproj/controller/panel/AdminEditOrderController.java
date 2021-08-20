@@ -10,6 +10,7 @@ import przemsza.com.github.shopproj.controller.main.OrderController;
 import przemsza.com.github.shopproj.model.mail.Mail;
 import przemsza.com.github.shopproj.model.order.Order;
 import przemsza.com.github.shopproj.model.order.OrderRepository;
+import przemsza.com.github.shopproj.model.order.OrderStatus;
 import przemsza.com.github.shopproj.model.time.DeliveryTime;
 
 import java.math.BigDecimal;
@@ -47,14 +48,11 @@ public class AdminEditOrderController {
     public String post(@ModelAttribute("ti") String time, @PathVariable("id") Long id) throws EmailException {
         String result = deliveryTime.getTimes().get(Integer.valueOf(time));
         Order order = orderRepository.findById(id).get();
+        order.setStatus(OrderStatus.IN_PROGRESS);
+        orderRepository.save(order);
         BigDecimal price = getPrice(order);
-        mail.sendEmail(order, price.doubleValue(),result);
+   //     mail.sendEmail(order, price.doubleValue(),result);
         return "redirect:/panel/orders";
-    }
-
-    @After("")
-    public void sen(){
-
     }
 
     public BigDecimal getPrice(Order order) {

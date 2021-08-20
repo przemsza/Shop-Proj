@@ -6,6 +6,11 @@
     box-sizing: border-box;
 }
 
+body{
+    height: 100%;
+    margin-bottom: -50px;
+}
+
 header {
     position: relative;
     width: 100%;
@@ -142,6 +147,7 @@ html{
 }
 
 .container{
+    position: relative;
     width: 80vw;
     margin: 0 auto;
     color: cornflowerblue;
@@ -199,14 +205,7 @@ img{
     height: 200px;
 }
 
-footer{
-    width: 100%;
-    background-color: goldenrod;
-    color: white;
-    text-align: center;
-    font-size: 30px;
-    line-height: 50px;
-}
+
 
 .nav-status ul li{
     line-height: 50px;
@@ -347,8 +346,22 @@ label textarea{
     margin: 0 auto;
 }
 
+.select-container{
+    width: 60%;
+    border: none;
+    margin: 40px auto;
+    padding-bottom: 30px;
+}
+
+.select-container label{
+    margin-left: 15%;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+
 select {
-    width: 30%;
+    width: 35%;
     font-size: 20px;
     line-height: 30px;
     display: inline-block;
@@ -359,15 +372,54 @@ select {
     border-radius: 4px;
     box-shadow: inset 1px 1px 2px #ddd8dc;
     background-color: darkcyan;
+    margin-right: 5%;
+    margin-left: 15%;
+    float: left;
 }
 
-.select-container a{
-    text-decoration: none;
-    box-sizing: border-box;
-    width: 20%;
-    background-color: royalblue;
-    color: white;
+
+
+.select-container .input-edit{
+    float: left;
+    background-color: darkcyan;
+    color: #eeeeee;
+    width: 35%;
     font-size: 20px;
-    line-height: 36px;
+    line-height: 30px;
 }
 
+.input-edit:hover{
+    background-color: royalblue;
+    color: #eeeeee;
+}
+
+.chief-pizza{
+    float: left;
+    border-radius: 15%;
+    height: 600px;
+    width: 350px;
+    margin-right: 10%;
+}
+
+article {
+    position: relative;
+    font-size: 24px;
+    width: 100%;
+    margin: 10px auto 20% auto;
+    color: #bb3e3e;
+    min-width: 100%;
+}
+
+article p{
+    color: navy;
+    font-size: 32px;
+    font-style: oblique;
+}
+
+footer{
+    background-color: goldenrod;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    line-height: 50px;
+}

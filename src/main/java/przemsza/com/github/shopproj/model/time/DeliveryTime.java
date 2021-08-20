@@ -12,13 +12,13 @@ public class DeliveryTime {
 
     public DeliveryTime() {
         times  = new TreeMap<>();
-        times.put(1, "30");
-        times.put(2, "45");
-        times.put(3, "60");
-        times.put(4, "75");
-        times.put(5, "90");
-        times.put(6, "105");
-        times.put(7, "120");
+        times.put(1, "30 minut");
+        times.put(2, "45 minut");
+        times.put(3, "60 minut");
+        times.put(4, "75 minut");
+        times.put(5, "90 minut");
+        times.put(6, "105 minut");
+        times.put(7, "120 minut");
     }
 
     public Map<Integer, String> getTimes() {

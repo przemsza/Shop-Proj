@@ -19,8 +19,17 @@
 <nav th:insert="general.html :: navigation" class="nav-menu"></nav>
 <div class="container">
     <main>
+        <article>
+        <p>
+            <img src="../../images/chief-pizza.jpg" th:src="@{/images/chief-pizza.jpg}" alt="restaurant chief" class="chief-pizza"/>
+            W tak miłej atmosferze można pogawędzić z przyjaciółmi, spotkać się z partnerem biznesowym lub ukochanym, zjeść smaczny posiłek w gronie rodziny.
+            Można tu wypić poranną, wyśmienitą kawę Lavazza, podawaną na kilka sposobów, pyszną włoską czekoladę lub delektować się herbatą z dodatkami oraz poprawić nastrój genialnym Tiramisu.
+            W menu można znaleźć nie tylko prawdziwie włoską pizzę według sprawdzonej receptury, ale i przeróżne makarony, sałatki, bagietki, zapiekanki, przekąski, dania obiadowe oraz desery. Posiłki smaczne, obfite i na każdą kieszeń.
+        </p>
+        </article>
+
     </main>
 </div>
-<footer th:insert="general.html :: foot"></footer>
+<footer th:insert="general.html :: foot" class="foot"></footer>
 </body>
 </html>

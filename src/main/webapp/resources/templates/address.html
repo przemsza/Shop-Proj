@@ -14,28 +14,33 @@
 <header th:insert="general.html :: head-logo" class="header-main"></header>
 <nav th:insert="general.html :: navigation" class="nav-menu"></nav>
 <div class="container">
-    <main th:object="${client}">
+    <main>
     <form method="post" th:action="@{/address/send}" th:object="${address}">
         <h2>Adres dostawy</h2>
-        <label>
+        <label th:object="${client}">
             <h3>Imie i Nazwisko</h3>
-            <input type="text" placeholder="Podaj imie i nazwisko..." th:field="${client.nameAndLastName}">
+            <input type="text" placeholder="Podaj imie i nazwisko..." th:field="${client.nameAndLastName}" th:errorclass="error-input">
+            <p th:if="${#fields.hasAnyErrors()}" th:errors="*{nameAndLastName}" class="error-message"></p>
         </label>
         <label>
             <h3>Ulica</h3>
-            <input type="text" placeholder="Podaj ulice..." th:field="*{street}">
+            <input type="text" placeholder="Podaj ulice..." th:field="*{street}" th:errorclass="error-input">
+            <p th:if="${#fields.hasAnyErrors()}" th:errors="*{street}" class="error-message"></p>
         </label>
         <label>
             <h3>Miasto</h3>
-            <input type="text" placeholder="Podaj ulice..." th:field="*{city}">
+            <input type="text" placeholder="Podaj ulice..." th:field="*{city}" th:errorclass="error-input">
+            <p th:if="${#fields.hasAnyErrors()}" th:errors="*{city}" class="error-message"></p>
         </label>
-        <label>
+        <label th:object="${client}">
             <h3>Numer telefonu</h3>
-            <input type="text" placeholder="Podaj numer teleonu..." th:field="${client.telephone}">
+            <input type="text" placeholder="Podaj numer teleonu..." th:field="${client.telephone}" th:errorclass="error-input">
+            <p th:if="${#fields.hasAnyErrors()}" th:errors="*{telephone}" class="error-message"></p>
         </label>
-        <label>
+        <label th:object="${client}">
               <h3>Adres email</h3>
-               <input type="text" placeholder="Podaj numer teleonu..." th:field="${client.email}">
+               <input type="text" placeholder="Podaj numer teleonu..." th:field="${client.email}" th:errorclass="error-input">
+               <p th:if="${#fields.hasAnyErrors()}" th:errors="*{email}" class="error-message"></p>
         </label>
         <label>
             <h3>Uwagi do zamówienia</h3>

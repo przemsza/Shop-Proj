@@ -4,6 +4,7 @@ import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import przemsza.com.github.shopproj.model.order.ClientOrder;
 import przemsza.com.github.shopproj.model.order.Order;
 import przemsza.com.github.shopproj.model.order.OrderRepository;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 
 @Controller
@@ -43,14 +45,24 @@ public class AddressController {
     }
 
     @PostMapping("/send")
-    public String getClientAddres(@ModelAttribute("address")ClientAddress clientAddress,@ModelAttribute("client") Client client, Model model){
+    public String getClientAddres(@ModelAttribute("address") @Valid ClientAddress clientAddress, BindingResult bidingAddress,
+                                  @ModelAttribute("client") @Valid Client client, BindingResult bindingClient, Model model){
+
+        if(bidingAddress.hasErrors() || bindingClient.hasErrors()){
+            model.addAttribute("address", clientAddress);
+            model.addAttribute("client", client);
+            model.addAttribute("items",clientOrder.getOrder().getOrderList());
+            BigDecimal price = orderController.getPrice();
+            model.addAttribute("price", price);
+            return "address";
+        }
+
         clientAddressRepository.save(clientAddress);
         clientRepository.save(client);
         order = clientOrder.getOrder();
         order.setAddress(clientAddress);
         order.setClient(client);
         orderRepository.save(order);
-        model.addAttribute("address", clientAddress);
         return "redirect:/";
     }
 

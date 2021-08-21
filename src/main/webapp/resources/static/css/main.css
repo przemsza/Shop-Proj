@@ -416,10 +416,26 @@ article p{
     font-style: oblique;
 }
 
+article p div{
+    padding-top: 50px;
+}
+
 footer{
     background-color: goldenrod;
     color: white;
     text-align: center;
     font-size: 30px;
     line-height: 50px;
+}
+
+input[class*="error-input"] {
+    border-color: #bb3e3e;
+}
+.error-message{
+    color: #bb3e3e;
+}
+
+input[class*="error-input"]::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: goldenrod;
+    opacity: 1; /* Firefox */
 }

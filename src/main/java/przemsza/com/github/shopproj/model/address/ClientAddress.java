@@ -2,6 +2,7 @@ package przemsza.com.github.shopproj.model.address;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class ClientAddress {
@@ -10,8 +11,10 @@ public class ClientAddress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
+    @NotBlank(message = "Ulica musi zostać podana")
     private String street;
     @Column(nullable = false)
+    @NotBlank(message = "Miasto musi zostać podane")
     private String city;
     @Column(length = 500)
     private String comments;

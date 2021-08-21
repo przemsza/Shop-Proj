@@ -2,6 +2,7 @@ package przemsza.com.github.shopproj.model.client;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Client {
@@ -10,10 +11,13 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, name = "name_and_last_name")
+    @NotBlank(message = "Musisz podać imię oraz nazwisko")
     private String nameAndLastName;
     @Column(nullable = false)
+    @NotBlank(message = "Numer telefonu musi być podany")
     private String telephone;
-    @Email
+    @Email(message = "Podaj poprawny adres email")
+    @NotBlank(message = "Podaj adres email")
     private String email;
 
     public Client(String nameAndLastName, String telephone, String email) {

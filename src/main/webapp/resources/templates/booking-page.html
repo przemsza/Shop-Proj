@@ -19,34 +19,40 @@
 <div class="container">
   <main>
     <form method="post" th:action="@{/booking/send}" th:object="${booking}">
-      <div th:object="${client}">
+      <div>
       <h2>Rezerwacja</h2>
-      <label>
+      <label th:object="${client}">
         <h3>Imie i nazwisko</h3>
-        <input type="text" th:field="${client.nameAndLastName}" placeholder="Podaj imie i nazwisko...">
+        <input type="text" th:field="${client.nameAndLastName}" placeholder="Podaj imie i nazwisko..." th:errorclass="error-input">
+        <p th:if="${#fields.hasAnyErrors()}" th:errors="*{nameAndLastName}" class="error-message"></p>
       </label>
-      <label>
+      <label th:object="${booking}">
         <h3>Data</h3>
-        <input type="date" th:field="${booking.date}">
+        <input type="date" th:field="${booking.date}" th:errorclass="error-input">
+        <p th:if="${#fields.hasAnyErrors()}" th:errors="${booking.date}" class="error-message"></p>
       </label>
-      <label>
+      <label th:object="${booking}">
         <h3>Godzina</h3>
-        <input type="time" th:field="${booking.time}" min="13:00" max="20:00" STEP="1:30:00" >
+        <input type="time" th:field="${booking.time}" min="13:00" max="20:00" STEP="1:30:00" th:errorclass="error-input">
+        <p th:if="${#fields.hasAnyErrors()}" th:errors="${booking.time}" class="error-message"></p>
       </label>
 
-      <label>
+      <label th:object="${booking}">
         <h3>Ilość osób</h3>
-        <input type="number" min="1" max="12" step="1" placeholder="Podaj ilosc osob..." th:field="${booking.numberOfPerson}">
+        <input type="number" min="1" max="12" step="1" placeholder="Podaj ilosc osob..." th:field="${booking.numberOfPerson}" th:errorclass="error-input">
+        <p th:if="${#fields.hasAnyErrors()}" th:errors="${booking.numberOfPerson}" class="error-message"></p>
       </label>
-      <label>
+      <label th:object="${client}">
         <h3>Numer telefonu</h3>
-        <input type="text" placeholder="Podaj numer teleonu..." th:field="${client.telephone}">
+        <input type="text" placeholder="Podaj numer teleonu..." th:field="${client.telephone}" th:errorclass="error-input">
+        <p th:if="${#fields.hasAnyErrors()}" th:errors="${client.telephone}" class="error-message"></p>
       </label>
-      <label>
+      <label th:object="${client}">
         <h3>Adres email</h3>
-        <input type="text" placeholder="Podaj adres email..." th:field="${client.email}">
+        <input type="text" placeholder="Podaj adres email..." th:field="${client.email}" th:errorclass="error-input">
+        <p th:if="${#fields.hasAnyErrors()}" th:errors="${client.email}" class="error-message"></p>
       </label>
-      <label>
+      <label th:object="${booking}">
         <h3>Uwagi do rezerwacji</h3>
         <textarea th:field="${booking.comments}" id="story" rows="5" cols="33" placeholder="Uwagi do zamówienia..."></textarea>
       </label>

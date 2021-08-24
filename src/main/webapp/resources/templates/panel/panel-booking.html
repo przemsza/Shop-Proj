@@ -10,15 +10,14 @@
   <link rel="stylesheet" media="screen" th:href="@{/css/main.css}">
   <link rel="stylesheet" th:href="@{/css/all.css}" href="/static/css/all.css" media="screen">
   <script src="https://kit.fontawesome.com/b0485a913b.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
 <header th:insert="general.html :: head-logo-admin" class="header-main"></header>
 <nav th:insert="general.html :: navigation-panel" class="nav-menu"></nav>
 <div class="order-logo">
-  <h1>Zamówienia klientów</h1>
+  <h1>Rezerwacje - zarządzenie</h1>
 </div>
-<nav th:insert="general.html :: navigation-status" class="nav-status"></nav>
+<nav th:insert="general.html :: navigation-booking" class="nav-status"></nav>
 <div class="container">
   <main>
     <table>
@@ -26,19 +25,22 @@
       <tr>
         <td>Id</td>
         <td>Klient</td>
-        <td>Ilośc osób</td>
+        <td>Rezerwacja</td>
         <td>Status</td>
         <td>Edycja</td>
       </tr>
       </thead>
       <tbody>
-      <tr th:each="order : ${ordersList}">
-        <td th:text="${order.id}"></td>
-        <td th:text="|Klient: ${order.address.toString()} /n Numer telefonu: ${order.client.telephone}|"></td>
-        <td th:text="${order.client.telephone}"></td>
-        <td th:text="${order.status}"></td>
-        <td><a th:href="|/panel/order/${order.id}|" class="edit-font"><i class="fas fa-edit"></i></a> </td>
-      </tr>
+      <tr th:each="booking : ${bookings}">
+        <td th:text="${booking.id}"></td>
+        <td th:text="|${booking.client.nameAndLastName}  ${booking.client.telephone}|"></td>
+        <td th:text="|${booking.date}, ${booking.time}  Ilość osób: ${booking.numberOfPerson}|"></td>
+        <td th:text="${booking.status}"></td>
+        <td>
+          <a th:unless="${booking.status.toString()} eq 'CANCELED'" th:href="|/panel/booking/canceled/${booking.id}|" class="edit-font"><i class="fas fa-ban"></i></a>
+          <a th:if="${booking.status.toString()} eq 'NEW'" th:href="|/panel/booking/accept/${booking.id}|" class="edit-font"><i class="fas fa-check"></i></a>
+        </td>
+        </tr>
       </tbody>
     </table>
   </main>

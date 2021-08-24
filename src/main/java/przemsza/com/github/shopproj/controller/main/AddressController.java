@@ -41,7 +41,6 @@ public class AddressController {
         this.orderRepository = orderRepository;
         this.email = email;
         this.clientRepository=clientRepository;
-        this.order = order;
     }
 
     @PostMapping("/send")

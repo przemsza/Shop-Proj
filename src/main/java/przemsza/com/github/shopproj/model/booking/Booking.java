@@ -1,9 +1,11 @@
 package przemsza.com.github.shopproj.model.booking;
 
+import org.springframework.format.annotation.NumberFormat;
 import przemsza.com.github.shopproj.model.client.Client;
 import przemsza.com.github.shopproj.model.order.OrderStatus;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Date;
@@ -13,26 +15,38 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      private Long id;
-      @Column(name = "local_date", nullable = false)
+      @Column(name = "local_date")
+      @NotBlank(message = "Data jest wymagana")
       private String date;
-      @Column(nullable = false)
+      @NotBlank(message = "Czas jest wymagany")
       private String time;
-      @Column()
+      @NumberFormat
       private Integer numberOfPerson;
       @Column(length = 500)
       private String comments;
       @ManyToOne
       private Client client;
-      private OrderStatus status;
+      @Enumerated(EnumType.STRING)
+      private BookingStatus status;
 
-    public Booking() {
+        public Booking() {
+        }
+
+        public Booking(String date, String time, Integer numberOfPerson, String comments) {
+            this.date = date;
+            this.time = time;
+            this.numberOfPerson = numberOfPerson;
+            this.comments = comments;
+            this.status = BookingStatus.NEW;
+        }
+
+
+    public BookingStatus getStatus() {
+        return status;
     }
 
-    public Booking(String date, String time, Integer numberOfPerson, String comments) {
-        this.date = date;
-        this.time = time;
-        this.numberOfPerson = numberOfPerson;
-        this.comments = comments;
+    public void setStatus(BookingStatus status) {
+        this.status = status;
     }
 
     public Client getClient() {

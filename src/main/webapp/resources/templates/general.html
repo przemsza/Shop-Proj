@@ -31,7 +31,7 @@
   <nav th:fragment="navigation-panel">
       <ul>
           <li><a th:href="@{/panel/orders}">Zamówienia</a></li>
-          <li><a th:href="@{/panel/bookings}">Rezerwacje</a></li>
+          <li><a th:href="@{/panel/booking}">Rezerwacje</a></li>
           <li><a th:href="@{/panel/history}">Historia</a></li>
           <li><a th:href="@{/#}">Kontakt</a></li>
       </ul>
@@ -42,6 +42,14 @@
           <li><a th:href="|@{/panel/orders/status/NEW}|">Nowe</a> </li>
           <li><a th:href="@{/panel/orders/status/IN_PROGRESS}">W przygotowaniu</a> </li>
           <li><a th:href="@{/panel/orders/status/COMPLETE}">Zrealizowane</a> </li>
+      </ul>
+  </nav>
+
+  <nav th:fragment="navigation-booking">
+      <ul>
+          <li><a th:href="|@{/panel/booking/status/NEW}|">Nowe</a> </li>
+          <li><a th:href="@{/panel/booking/status/CONFIRMED}">Potwierdzone</a> </li>
+          <li><a th:href="@{/panel/booking/status/CANCELED}">Anulowane</a> </li>
       </ul>
   </nav>
 

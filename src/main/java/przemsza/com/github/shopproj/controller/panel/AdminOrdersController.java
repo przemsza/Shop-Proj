@@ -23,7 +23,7 @@ public class AdminOrdersController {
         this.orderRepository = orderRepository;
     }
 
-    @GetMapping("/orders")
+    @GetMapping(value = {"","/orders"})
     public String mainSite(Model model){
         List<Order> all = orderRepository.findAll();
         model.addAttribute("ordersList", all);

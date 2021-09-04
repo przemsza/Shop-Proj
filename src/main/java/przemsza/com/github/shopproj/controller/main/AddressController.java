@@ -1,6 +1,5 @@
 package przemsza.com.github.shopproj.controller.main;
 
-import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,11 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import przemsza.com.github.shopproj.model.mail.Mail;
+import przemsza.com.github.shopproj.controller.main.check.AddressCheck;
+import przemsza.com.github.shopproj.controller.main.check.ClientCheck;
 import przemsza.com.github.shopproj.model.address.ClientAddress;
 import przemsza.com.github.shopproj.model.address.ClientAddressRepository;
 import przemsza.com.github.shopproj.model.client.Client;
 import przemsza.com.github.shopproj.model.client.ClientRepository;
+import przemsza.com.github.shopproj.model.mail.Mail;
 import przemsza.com.github.shopproj.model.order.ClientOrder;
 import przemsza.com.github.shopproj.model.order.Order;
 import przemsza.com.github.shopproj.model.order.OrderRepository;
@@ -32,15 +33,21 @@ public class AddressController {
     private Mail email;
     private ClientRepository clientRepository;
     private Order order;
+    private ClientCheck clientCheck;
+    private AddressCheck addressCheck;
 
     @Autowired
-    public AddressController(ClientAddressRepository clientAddressRepository, ClientOrder clientOrder, OrderController orderController, OrderRepository orderRepository, Mail email,ClientRepository clientRepository) {
+    public AddressController(ClientAddressRepository clientAddressRepository, ClientOrder clientOrder,
+                             OrderController orderController, OrderRepository orderRepository, Mail email,
+                             ClientRepository clientRepository, ClientCheck clientCheck, AddressCheck addressCheck) {
         this.clientAddressRepository = clientAddressRepository;
         this.clientOrder = clientOrder;
         this.orderController = orderController;
         this.orderRepository = orderRepository;
         this.email = email;
         this.clientRepository=clientRepository;
+        this.clientCheck = clientCheck;
+        this.addressCheck = addressCheck;
     }
 
     @PostMapping("/send")
@@ -56,11 +63,13 @@ public class AddressController {
             return "address";
         }
 
-        clientAddressRepository.save(clientAddress);
-        clientRepository.save(client);
+//        clientAddressRepository.save(clientAddress);
+
+        Client checkedClient = clientCheck.checkClintExist(client);
         order = clientOrder.getOrder();
-        order.setAddress(clientAddress);
-        order.setClient(client);
+        ClientAddress checkedClientAddress = addressCheck.checkAddress(clientAddress);
+        order.setAddress(checkedClientAddress);
+        order.setClient(checkedClient);
         orderRepository.save(order);
         return "redirect:/";
     }

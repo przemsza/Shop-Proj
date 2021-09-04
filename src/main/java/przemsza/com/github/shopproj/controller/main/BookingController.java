@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import przemsza.com.github.shopproj.model.address.ClientAddress;
+import przemsza.com.github.shopproj.controller.main.check.ClientCheck;
 import przemsza.com.github.shopproj.model.booking.Booking;
 import przemsza.com.github.shopproj.model.booking.BookingRepository;
 import przemsza.com.github.shopproj.model.booking.ClientBooking;
@@ -16,24 +16,20 @@ import przemsza.com.github.shopproj.model.client.Client;
 import przemsza.com.github.shopproj.model.client.ClientRepository;
 
 import javax.validation.Valid;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.util.Date;
 
 @Controller
 @RequestMapping("/booking")
 public class BookingController {
 
     private BookingRepository bookingRepository;
-    private ClientRepository clientRepository;
     private ClientBooking clientBooking;
+    private ClientCheck clientCheck;
 
     @Autowired
-    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository, ClientBooking clientBooking) {
+    public BookingController(BookingRepository bookingRepository, ClientBooking clientBooking, ClientCheck clientCheck){
         this.bookingRepository = bookingRepository;
-        this.clientRepository = clientRepository;
         this.clientBooking = clientBooking;
+        this.clientCheck = clientCheck;
     }
 
     @GetMapping("")
@@ -54,12 +50,11 @@ public class BookingController {
             model.addAttribute("booking", booking);
             return "booking-page";
         }
-        clientRepository.save(client);
-        booking.setClient(client);
+
+        Client clientChecked = clientCheck.checkClintExist(client);
+        booking.setClient(clientChecked);
         clientBooking.setBooking(booking);
         bookingRepository.save(clientBooking.getBooking());
         return "redirect:/booking";
-
     }
-
 }

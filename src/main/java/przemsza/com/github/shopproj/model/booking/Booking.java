@@ -2,13 +2,9 @@ package przemsza.com.github.shopproj.model.booking;
 
 import org.springframework.format.annotation.NumberFormat;
 import przemsza.com.github.shopproj.model.client.Client;
-import przemsza.com.github.shopproj.model.order.OrderStatus;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class Booking {
@@ -74,7 +70,7 @@ public class Booking {
     }
 
     public void setComments(String comments) {
-        comments = comments;
+        this.comments = comments;
     }
 
     public void setId(Long id) {

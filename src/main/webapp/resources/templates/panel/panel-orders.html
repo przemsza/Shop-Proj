@@ -28,6 +28,7 @@
         <td>Klient</td>
         <td>Ilośc osób</td>
         <td>Status</td>
+        <td>Uwagi</td>
         <td>Edycja</td>
       </tr>
       </thead>
@@ -37,6 +38,7 @@
         <td th:text="|Klient: ${order.address.toString()} /n Numer telefonu: ${order.client.telephone}|"></td>
         <td th:text="${order.client.telephone}"></td>
         <td th:text="${order.status}"></td>
+        <td th:text="${order.address.comments}"></td>
         <td><a th:href="|/panel/order/${order.id}|" class="edit-font"><i class="fas fa-edit"></i></a> </td>
       </tr>
       </tbody>

@@ -147,8 +147,8 @@ html{
 }
 
 .container{
-    position: relative;
-    width: 80vw;
+    position: center;
+    width: 100%;
     margin: 0 auto;
     color: cornflowerblue;
     background-color: white;
@@ -156,9 +156,10 @@ html{
 
 table{
     font-size: 16px;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 80%;
+    position: center;
+    margin: 20px auto;
+
 }
 
 table td{

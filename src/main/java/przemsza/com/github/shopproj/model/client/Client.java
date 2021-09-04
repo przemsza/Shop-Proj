@@ -3,6 +3,7 @@ package przemsza.com.github.shopproj.model.client;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.Objects;
 
 @Entity
 public class Client {
@@ -59,5 +60,18 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Client)) return false;
+        Client client = (Client) o;
+        return getNameAndLastName().equals(client.getNameAndLastName()) && getTelephone().equals(client.getTelephone()) && getEmail().equals(client.getEmail());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getNameAndLastName(), getTelephone(), getEmail());
     }
 }
